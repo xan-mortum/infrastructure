@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  resourceapi:
+    build:
+      context: ./resourcesapi
+    container_name: resourcesapi
+    ports:
+      - "8082:8082"
+  authapi:
+    build:
+      context: ./authapi
+    container_name: authapi
+    ports:
+      - "8081:8081"
+  apigateway:
+    build:
+      context: ./apigateway
+    container_name: apigateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - authapi
+      - resourceapi
