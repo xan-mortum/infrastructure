@@ -1,0 +1,43 @@
+definitions:
+  command.CheckToken:
+    properties:
+      token:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /check_token:
+    post:
+      description: Check token
+      parameters:
+      - description: Some token
+        in: body
+        name: token
+        required: true
+        schema:
+          $ref: '#/definitions/command.CheckToken'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+      summary: Check token
+      tags:
+      - token
+  /token:
+    post:
+      description: Generate new jwt token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Generate new jwt token
+      tags:
+      - token
+swagger: "2.0"
